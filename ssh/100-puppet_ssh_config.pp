@@ -1,15 +1,11 @@
-# make changes to config file using Puppet
-
-include stdlib
-
-file_line { 'Refuse to authenticate using a password':
-  ensure => present,
-  path   => '/etc/ssh/ssh_config',
-  line   => 'PasswordAuthentication no',
-}
-
-file_line { 'Use private key':
-  ensure => present,
-  path   => '/etc/ssh/ssh_config',
-  line   => 'IdentityFile ~/.ssh/school'
+# No PasswordAuthentication using puppet
+file { '/etc/ssh/ssh_config':
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+  content => "
+    Host *
+      IdentityFile ~/.ssh/school
+      PasswordAuthentication no
+  ",
 }

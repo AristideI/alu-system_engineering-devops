@@ -1,10 +1,5 @@
-# ssh_config
-
-Host *
-    PasswordAuthentication no
-    IdentityFile ~/.ssh/school
-    SendEnv LANG LC_*
-    HashKnownHosts yes
-    GSSAPIAuthentication yes
-    HostName 100.26.10.86
-    User ubuntu
+#!/usr/bin/env bash
+#Configuring a remote host to accept connections without password
+Host * 
+        IndetityFile ~/.ssh/school
+        PasswordAuthentication no
